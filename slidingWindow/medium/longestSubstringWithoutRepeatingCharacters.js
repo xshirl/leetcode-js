@@ -13,3 +13,18 @@ var lengthOfLongestSubstring = function (s) {
 };
 
 //https://leetcode.com/problems/longest-substring-without-repeating-characters/
+
+function longest(s) {
+  let hashmap = {}
+  let maxLength = 0
+  let start =0
+  for (let i = 0; i < s.length; i++) {
+    let char = s[i];
+    if (char in hashmap) {
+      start = Math.max(start, hashmap[char] + 1)
+    }
+    hashmap[char] = i;
+    maxLength = Math.max(maxLength, i - start+ 1)
+  }
+  return maxLength
+}

@@ -1,27 +1,23 @@
+//https://leetcode.com/problems/sort-colors
+
 /**
  * @param {number[]} nums
  * @return {void} Do not return anything, modify nums in-place instead.
  */
 var sortColors = function (nums) {
+  let low = 0
   let i = 0
-  let j = 0
-  let k = nums.length - 1
-  while (i <= k) {
+  let high = nums.length - 1
+  while (i <= high) {
     if (nums[i] == 0) {
-      let temp = nums[i]
-      nums[i] = nums[j]
-      nums[j] = temp
-      i += 1
-      j += 1
+      ;[nums[i], nums[low]] = [nums[low], nums[i]]
+      i++
+      low++
     } else if (nums[i] == 1) {
-      i += 1
+      i++
     } else {
-      let temp = nums[i]
-      nums[i] = nums[k]
-      nums[k] = temp
-      k -= 1
+      ;[nums[i], nums[high]] = [nums[high], nums[i]]
+      high--
     }
   }
 }
-
-//https://leetcode.com/problems/sort-colors
